@@ -9,11 +9,34 @@ from city
 where countrycode = 'JPN';
 
 --bai 3
+select CITY, STATE
+from STATION;
 
---bai 8
+--bai 4 
+select distinct city
+from station
+where city like 'A%' or city like 'E%' or city like 'I%'  or city like 'O%' or city like 'U%';
+
+--bai 5
+select distinct city
+from station
+where city like '%a' or city like '%e' or city like '%i'  or city like '%o' or city like '%u';
+
+--bai 6 
+select distinct city
+from station
+where  city  not like 'A%' and city not like 'E%' and city  not like 'I%'  and city  not like 'O%' and city  not like 'U%';
+
+--bai 7
 select name 
 from Employee
 order by name;
+
+--bai 8
+select name
+from employee
+where salary > 2000 and months <10 
+order by employee_id asc;
 
 --bai 9
 select product_id
