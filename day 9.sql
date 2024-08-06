@@ -27,3 +27,16 @@ from Customer
 where referee_id not in ('2') or referee_id is null
 
 -- bai 5
+select 
+case
+    when survived = 1 then '1'
+    when survived = 0 then '0'
+    end category,
+sum(case
+        when pclass = 1 then 1 else 0 end) first_class,
+sum(case
+        when pclass = 2 then 1 else 0 end) second_class,
+sum(case
+        when pclass = 3 then 1 else 0 end) third_class
+from titanic
+group by category
