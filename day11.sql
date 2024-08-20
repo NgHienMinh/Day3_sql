@@ -54,4 +54,28 @@ from customer
 Where total<1
 
 -- bai 5
+with manager
+as
+(
+    select reports_to, count(reports_to) as reports_count, ceiling(avg(age)) as average_age
+    from Employees
+    group by reports_to 
+)
+select Employees.employee_id, Employees.name, manager.reports_count, manager.average_age
+from Employees
+join manager on Employees.employee_id =manager.reports_to
 
+-- bai 6
+select Products.product_name, sum(Orders.unit) as unit
+from Orders
+join Products on Products.product_id = Orders.product_id
+where extract(month from order_date)=2 and extract(year from order_date)=2020
+group by Products.product_id, Products.product_name, Products.product_category
+having sum(Orders.unit)>=100
+
+-- bai 7
+SELECT pages.page_id
+FROM pages
+left join page_likes on pages.page_id=page_likes.page_id
+where page_likes.user_id is null
+order by pages.page_id
