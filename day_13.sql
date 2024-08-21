@@ -59,3 +59,17 @@ from  approved
 join total on total.month=approved.month and total.country = approved.country
 
 -- bai 7
+with rank
+as(
+    select product_id, quantity, price, year
+    ,row_number() over(partition by product_id order by year asc) as rank_year
+    from Sales
+)
+select product_id, year as first_year, quantity, price
+from rank
+where rank_year=1
+
+-- bai 8
+
+
+
