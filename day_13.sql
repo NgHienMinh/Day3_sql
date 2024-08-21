@@ -72,4 +72,22 @@ where rank_year=1
 -- bai 8
 
 
+-- bai 9
+with employ
+as(
+    select employee_id
+    from Employees
+)
+select employee_id
+from Employees
+where salary < 30000 and manager_id not in (select employee_id from employ)
+
+-- bai 10
+
+
+-- bai 11
+
+
+-- bai 12
+
 
